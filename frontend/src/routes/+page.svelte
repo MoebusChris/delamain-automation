@@ -1,4 +1,9 @@
-<!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
+<script lang="ts">
+	import { LightSwitch } from "@skeletonlabs/skeleton";
+</script>
+
+
+
 
 <div class="container h-full mx-auto flex justify-center items-center">
 	<div class="space-y-10 text-center">

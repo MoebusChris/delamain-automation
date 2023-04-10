@@ -5,45 +5,45 @@
 	import '@skeletonlabs/skeleton/styles/all.css';
 	// Most of your app wide CSS should be put in this file
 	import '../app.postcss';
-	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
+	import { AppShell } from '@skeletonlabs/skeleton';
+	import { Writable, writable } from 'svelte/store';
+	import { page } from '$app/stores';
+	
+	// Conponents here
+	import Navbar from '$lib/components/navbar.svelte';
+	import Sidebar from '$lib/components/Sidebar.svelte';
+
+	// This is an example of how to use a store to control the selected value of the AppRail
+	const storeValue: Writable<number> = writable(0);
+
+
+
+
+
 </script>
 
+
+
 <!-- App Shell -->
-<AppShell>
+<AppShell slotSidebarLeft="bg-surface-500/5 w-auto">
+	<!-- Navigation Bar -->
 	<svelte:fragment slot="header">
-		<!-- App Bar -->
-		<AppBar>
-			<svelte:fragment slot="lead">
-				<strong class="text-xl uppercase">Skeleton</strong>
-			</svelte:fragment>
-			<svelte:fragment slot="trail">
-				<a
-					class="btn btn-sm variant-ghost-surface"
-					href="https://discord.gg/EXqV7W8MtY"
-					target="_blank"
-					rel="noreferrer"
-				>
-					Discord
-				</a>
-				<a
-					class="btn btn-sm variant-ghost-surface"
-					href="https://twitter.com/SkeletonUI"
-					target="_blank"
-					rel="noreferrer"
-				>
-					Twitter
-				</a>
-				<a
-					class="btn btn-sm variant-ghost-surface"
-					href="https://github.com/skeletonlabs/skeleton"
-					target="_blank"
-					rel="noreferrer"
-				>
-					GitHub
-				</a>
-			</svelte:fragment>
-		</AppBar>
+		<Navbar />
 	</svelte:fragment>
+	<!-- App Rail -->
+	<svelte:fragment slot="sidebarLeft">
+		<Sidebar />
+
+	</svelte:fragment>
+
+
+	
 	<!-- Page Route Content -->
 	<slot />
+
+		
+	<svelte:fragment slot="footer">
+		
+	</svelte:fragment>
 </AppShell>
+ 
