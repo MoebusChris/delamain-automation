@@ -6,19 +6,11 @@
 	// Most of your app wide CSS should be put in this file
 	import '../app.postcss';
 	import { AppShell } from '@skeletonlabs/skeleton';
-	import { Writable, writable } from 'svelte/store';
 	import { page } from '$app/stores';
 	
 	// Conponents here
-	import Navbar from '$lib/components/navbar.svelte';
+	import Navbar from '$lib/components/Navbar.svelte';
 	import Sidebar from '$lib/components/Sidebar.svelte';
-
-	// This is an example of how to use a store to control the selected value of the AppRail
-	const storeValue: Writable<number> = writable(0);
-
-
-
-
 
 </script>
 
