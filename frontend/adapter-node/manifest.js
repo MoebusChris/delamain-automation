@@ -25,3 +25,5 @@ export const manifest = {
 		}
 	}
 };
+
+export const prerendered = new Set([]);
