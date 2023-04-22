@@ -24,7 +24,7 @@
     export let embedded = false;
 
     // Local
-    const storeCategory: Writable<string> = writable(); // workflow | accounting | finance | tools ---You should figure out what the props do in the writable.
+    const storeCategory: Writable<string> = writable('workflow'); // workflow | accounting | finance | tools ---You should figure out what the props do in the writable.
     let filteredMenuNavLinks: any [] = menuNavLinks;
 
     // ListItem Click Handler
@@ -73,7 +73,7 @@
 
 <!-- App Rail -->
 <div class="grid grid-cols-[auto_1fr] h-full bg-surface-50-900-token border-r border-surface-500/30 {$$props.class ?? ''}">
-    <AppRail selected={storeCategory} height="h-full">
+    <AppRail selected={storeCategory} class="border-r border-surface-500/30">
     	<AppRailTile label="Workflow" value={'workflow'}><i class="fa-duotone fa-arrows-spin" /></AppRailTile>
     	<AppRailTile label="Accounting" value={'accounting'}>(icon)</AppRailTile>
     	<AppRailTile label="Finance" value={'finance'}>(icon)</AppRailTile>
@@ -81,7 +81,7 @@
     </AppRail>
 
 
-	<section class="p-4 pb-20 space-y-4 overflow-y-auto">
+	<section class="p-4 pb-20 space-y-4 overflow-y-auto w-64">
 		{#each filteredMenuNavLinks as { id, title, list }, i}
 			{#if list.length > 0}
 				<!-- Title -->
