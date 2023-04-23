@@ -6,6 +6,9 @@
 	// Most of your app wide CSS should be put in this file
 	import '../../app.postcss';
 
+    // Iconify to load icons
+    import Icon from '@iconify/svelte';
+
     // Menu links for the sidebar
     import { menuNavLinks } from '../../docs/links';
 
@@ -46,7 +49,7 @@
                 filteredMenuNavLinks = menuNavLinks.filter((linkSet: any) => ['accounting'].includes(linkSet.id)); 
                 break;
             case ('finance'): 
-                filteredMenuNavLinks = menuNavLinks.filter((linkSet: any) => ['finance'].includes(linkSet.id)); 
+                filteredMenuNavLinks = menuNavLinks.filter((linkSet: any) => ['finance','input','output'].includes(linkSet.id)); 
                 break;
             case ('automation'): 
                 filteredMenuNavLinks = menuNavLinks.filter((linkSet: any) => ['automation'].includes(linkSet.id)); 
@@ -73,14 +76,14 @@
 
 <!-- App Rail -->
 <div class="grid grid-cols-[auto_1fr] h-full bg-surface-50-900-token border-r border-surface-500/30 {$$props.class ?? ''}">
+    <!--App Rail-->
     <AppRail selected={storeCategory} class="border-r border-surface-500/30">
-    	<AppRailTile label="Workflow" value={'workflow'}><i class="fa-duotone fa-arrows-spin" /></AppRailTile>
-    	<AppRailTile label="Accounting" value={'accounting'}>(icon)</AppRailTile>
-    	<AppRailTile label="Finance" value={'finance'}>(icon)</AppRailTile>
-        <AppRailTile label="Automation" value={'automation'}>(icon)</AppRailTile>
+    	<AppRailTile label="Workflow" value={'workflow'}><Icon icon="typcn:arrow-repeat-outline" style="font-size: 40px; " /></AppRailTile>
+    	<AppRailTile label="Accounting" value={'accounting'}><Icon icon="typcn:calculator" style="font-size: 40px; " /></AppRailTile>
+    	<AppRailTile label="Finance" value={'finance'}><Icon icon="typcn:chart-bar-outline" style="font-size: 40px; " /></AppRailTile>
+        <AppRailTile label="Automation" value={'automation'}><Icon icon="typcn:spanner-outline" style="font-size: 40px; " /></AppRailTile>
     </AppRail>
-
-
+    <!--Nav Link-->
 	<section class="p-4 pb-20 space-y-4 overflow-y-auto w-64">
 		{#each filteredMenuNavLinks as { id, title, list }, i}
 			{#if list.length > 0}

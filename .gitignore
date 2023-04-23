@@ -200,9 +200,16 @@ dist
 # Serverless Webpack directories
 .webpack/
 
-# Optional stylelint cache
+# Additional files
+.DS_Store
+.vscode/
+.svelte-kit/
+.vercel/
+adapter-node/
+build/
+generated/
+output/
+public
 
-# SvelteKit build / generate output
-.svelte-kit
 
 # End of https://www.toptal.com/developers/gitignore/api/node

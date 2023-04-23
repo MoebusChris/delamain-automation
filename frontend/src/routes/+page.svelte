@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { LightSwitch } from "@skeletonlabs/skeleton";
+	
 </script>
 
 
@@ -47,7 +47,7 @@
 	}
 	figure svg,
 	.img-bg {
-		@apply w-64 h-64 md:w-80 md:h-80;
+		@apply w-64 h-6 md:w-80 md:h-80;
 	}
 	.img-bg {
 		@apply absolute z-[-1] rounded-full blur-[50px] transition-all;
