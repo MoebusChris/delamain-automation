@@ -7,10 +7,13 @@ import { localStorageStore } from '$lib/utilities/LocalStorageStore/LocalStorage
 export const storeCurrentUrl: Writable<string | undefined> = writable(undefined);
 
 // Set within root layout, set TRUE if served in Vercel production mode
-export const storeIsVercelProduction: Writable<boolean> = writable(false);
+export const storeVercelProductionMode: Writable<boolean> = writable(false);
 
 // Local Storage Store ---
 
+// Presists select preset theme
+export const storeTheme: Writable<string> = localStorageStore('storeTheme', 'skeleton');
+
 // Persists the tab selection for the user'spreferred onboarding method
-export const storeOnboardingMethod: Writable<string> = localStorageStore('onboardingMethod', 'cli');
+export const storeOnboardMethod: Writable<string> = localStorageStore('storeOnboardMethod', 'cli');
 

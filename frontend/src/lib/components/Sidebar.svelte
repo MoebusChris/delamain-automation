@@ -43,16 +43,16 @@
         // Prettier-ignore
         switch($storeCategory) {
             case ('workflow'): 
-                filteredMenuNavLinks = menuNavLinks.filter((linkSet: any) => ['workflow'].includes(linkSet.id)); 
+                filteredMenuNavLinks = menuNavLinks.filter((linkSet: any) => linkSet.id === 'workflow');
                 break;
             case ('accounting'): 
-                filteredMenuNavLinks = menuNavLinks.filter((linkSet: any) => ['accounting'].includes(linkSet.id)); 
+                filteredMenuNavLinks = menuNavLinks.filter((linkSet: any) => linkSet.id === 'accounting');
                 break;
             case ('finance'): 
-                filteredMenuNavLinks = menuNavLinks.filter((linkSet: any) => ['finance','input','output'].includes(linkSet.id)); 
+                filteredMenuNavLinks = menuNavLinks.filter((linkSet: any) => ['finance', 'input', 'output'].includes(linkSet.id));
                 break;
             case ('automation'): 
-                filteredMenuNavLinks = menuNavLinks.filter((linkSet: any) => ['automation'].includes(linkSet.id)); 
+                filteredMenuNavLinks = menuNavLinks.filter((linkSet: any) => linkSet.id === 'automation');
                 break;
         }
     }
@@ -61,6 +61,7 @@
     page.subscribe((p) => {
         let pathMatch: string = p.url.pathname.split('/')[1];
         if (!pathMatch) return;
+        if (['input', 'output'].includes(pathMatch)) pathMatch = 'finance';
         setNavCategory(pathMatch);
     });
     storeCategory.subscribe((c: string) => setNavCategory(c));
@@ -77,7 +78,7 @@
 <!-- App Rail -->
 <div class="grid grid-cols-[auto_1fr] h-full bg-surface-50-900-token border-r border-surface-500/30 {$$props.class ?? ''}">
     <!--App Rail-->
-    <AppRail selected={storeCategory} class="border-r border-surface-500/30">
+    <AppRail selected={storeCategory} background="bg-transparent" border="border-r border-surface-500/30">
     	<AppRailTile label="Workflow" value={'workflow'}><Icon icon="typcn:arrow-repeat-outline" style="font-size: 40px; " /></AppRailTile>
     	<AppRailTile label="Accounting" value={'accounting'}><Icon icon="typcn:calculator" style="font-size: 40px; " /></AppRailTile>
     	<AppRailTile label="Finance" value={'finance'}><Icon icon="typcn:chart-bar-outline" style="font-size: 40px; " /></AppRailTile>
