@@ -79,6 +79,10 @@
 <div class="grid grid-cols-[auto_1fr] h-full bg-surface-50-900-token border-r border-surface-500/30 {$$props.class ?? ''}">
     <!--App Rail-->
     <AppRail selected={storeCategory} background="bg-transparent" border="border-r border-surface-500/30">
+        <div class="lg:hidden">
+            <AppRailTile label="Home" tag="a" href="/" value={'home'} on:click={onListItemClick}><Icon icon="typcn:home-outline" style="font-size: 40px; " /></AppRailTile>
+            <hr class="opacity-30" />
+        </div>
     	<AppRailTile label="Workflow" value={'workflow'}><Icon icon="typcn:arrow-repeat-outline" style="font-size: 40px; " /></AppRailTile>
     	<AppRailTile label="Accounting" value={'accounting'}><Icon icon="typcn:calculator" style="font-size: 40px; " /></AppRailTile>
     	<AppRailTile label="Finance" value={'finance'}><Icon icon="typcn:chart-bar-outline" style="font-size: 40px; " /></AppRailTile>

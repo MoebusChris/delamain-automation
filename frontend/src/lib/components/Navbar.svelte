@@ -6,15 +6,39 @@
 	// Most of your app wide CSS should be put in this file
 	import '../../app.postcss';
 
+    // Iconify to load icons
+    import Icon from '@iconify/svelte';
 
+    // Importing AppBar
     import { AppBar } from '@skeletonlabs/skeleton';
+
+    // Types
+    import type { DrawerSettings } from '@skeletonlabs/skeleton';
+
+    // Stores
+    import { Drawer, drawerStore } from '@skeletonlabs/skeleton';
+
+    // Drawer Handler
+    function drawerOpen(): void {
+        const s: DrawerSettings = { id: 'doc-sidenav' };
+        drawerStore.open(s);
+    } 
+
 </script>
 
 
     <!-- App Bar -->
-    <AppBar>
+    <AppBar shadow="shadow-xl">
         <svelte:fragment slot="lead">
-            <strong class="text-xl uppercase">Delamain Automation</strong>
+            <div class="flex item-center space-x-4">
+                <button on:click={drawerOpen} class="btn-icon btn-icon-sm lg:!hidden">
+                    <strong class="text-xl uppercase">Delamain</strong>
+                </button>
+                <a class="lg:!ml-0 w-[32px] lg:w-auto overflow-hidden" href="/" title="Go to Homepage">
+                    <Icon icon="majesticons:menu-expand-right" style="font-size: 40px; " />
+                </a>
+            </div>
+            
         </svelte:fragment>
         <svelte:fragment slot="trail">
             <a
