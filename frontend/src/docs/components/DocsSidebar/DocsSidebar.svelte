@@ -1,30 +1,25 @@
 <script lang='ts'>
-    // The ordering of these imports is critical to your app working properly
-	import '@skeletonlabs/skeleton/themes/theme-gold-nouveau.css';
-	// If you have source.organizeImports set to true in VSCode, then it will auto change this ordering
-	import '@skeletonlabs/skeleton/styles/all.css';
-	// Most of your app wide CSS should be put in this file
-	import '../../app.postcss';
+	import { page } from '$app/stores';
+    import { writable, type Writable  } from 'svelte/store';
 
     // Iconify to load icons
     import Icon from '@iconify/svelte';
-
     // Menu links for the sidebar
-    import { menuNavLinks } from '../../docs/links';
+    import { menuNavLinks } from '../../links';
 
     import { AppRail, AppRailTile} from '@skeletonlabs/skeleton';
+
+    // Stores
+	import { storeCurrentUrl } from '../../stores/stores';
     import { Drawer, drawerStore } from '@skeletonlabs/skeleton';
-    // Drawer Utility
-    import { writable, type Writable  } from 'svelte/store';
-	import { storeCurrentUrl } from '../../docs/stores/stores';
-
-    //Svelte Page
-	import { page } from '$app/stores';
-	
-
 
     // Props
     export let embedded = false;
+
+    
+	
+
+
 
     // Local
     const storeCategory: Writable<string> = writable('workflow'); // workflow | accounting | finance | tools ---You should figure out what the props do in the writable.

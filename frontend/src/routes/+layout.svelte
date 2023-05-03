@@ -9,27 +9,42 @@
 	import { page } from '$app/stores';
 	
 	// Conponents here
-	import Navbar from '$lib/components/Navbar.svelte';
-	import Sidebar from '$lib/components/Sidebar.svelte';
+	import DocsAppbar from '../docs/components/DocsAppbar/DocsAppbar.svelte';
+	import DocsSidebar from '../docs/components/DocsSidebar/DocsSidebar.svelte';
+	import DocsDrawer from '../docs/components/DocsDrawer/DocsDrawer.svelte';
 
+	function matchPathWhitelist(pageUrlPath: string): boolean {
+		// If homepage route
+		if (pageUrlPath === '/') return true;
+		// If any blog route
+		if (pageUrlPath.includes('/blog')) return true;
+		return false;
+	}
+
+
+
+
+	// Reactive
+	// Disable left sidebar on homepage and blog
+	$: slotSidebarLeft = matchPathWhitelist($page.url.pathname) ? 'w-0' : 'bg-surface-50-900-token lg:w-auto'
 </script>
 
+<!-- Overlay -->
+<DocsDrawer />
 
 
 <!-- App Shell -->
-<AppShell slotSidebarLeft="bg-surface-500/5 w-auto">
-	<!-- Navigation Bar -->
+<AppShell {slotSidebarLeft} regionPage="overflow-y-scroll" slotFooter="bg-black p-4">
+	<!-- Header (Navbar) -->
 	<svelte:fragment slot="header">
-		<Navbar />
+		<DocsAppbar />
 	</svelte:fragment>
-	<!-- App Rail -->
+
+	<!-- Sidebar (Left) -->
 	<svelte:fragment slot="sidebarLeft">
-		<Sidebar />
-
+		<DocsSidebar class="hidden lg:grid w-[360px] overflow-hidden" />
 	</svelte:fragment>
 
-
-	
 	<!-- Page Route Content -->
 	<slot />
 
