@@ -3,6 +3,7 @@
 
     // Types
     import type { DrawerSettings } from '@skeletonlabs/skeleton';
+    import type { PopupSettings } from '@skeletonlabs/skeleton';
 
     // Docs
     import DocsIcon from '../DocsIcon/DocsIcon.svelte'; 
@@ -13,7 +14,10 @@
 
     // Components
     import { AppBar } from '@skeletonlabs/skeleton';
-
+    
+    // Utilities
+    import { LightSwitch } from '@skeletonlabs/skeleton'
+    import { popup } from '@skeletonlabs/skeleton';
 
     // Stores
     import { Drawer, drawerStore } from '@skeletonlabs/skeleton';
@@ -22,7 +26,13 @@
     function drawerOpen(): void {
         const s: DrawerSettings = { id: 'doc-sidenav' };
         drawerStore.open(s);
-    } 
+    }
+
+    // Popup Handler
+    let popupSettings: PopupSettings = {
+        event: 'click',
+        target: 'features'
+    };
 
 </script>
 
@@ -34,7 +44,7 @@
             <div class="flex items-center space-x-4">
                 <!-- Hamburger Menu -->
                 <button on:click={drawerOpen} class="lg:!hidden">
-                    <Icon icon="ic:twotone-menu" style="font-size: 40px" />
+                    <i class="fa-solid fa-bars text-xl" />
                 </button>
                 <!-- Logo -->
                 <a class="lg:!ml-0 lg:w-auto overflow-hidden" href="/" title="Go to Homepage">
@@ -45,22 +55,72 @@
         </svelte:fragment>
         <svelte:fragment slot="trail">
 
-            <!-- Blog -->
-            <a
-                class="btn variant-ghost-surface"
-                href="/blog"
-            >
-            Blog
-            </a>            
+            <!-- Jump to -->
+            <div>
+                <!-- Trigger -->
+                <button class="btn hover:variant-soft-primary" use:popup={popupSettings}>
+                    <span>Jump to</span>
+                    <i class="fa-solid fa-caret-down opacity-50" />
+                </button>
+                <!-- popup -->
+                <div class="card p-4 w-60 shadow-xl" data-popup="features">
+                    <nav class="list-nav">
+                        <ul>
+                            <section class="flex justify-between items-center">
+                                <h6 class="h6">Mode</h6>
+                                <LightSwitch />
+                            </section>
+                            <hr class="!my-4" />
+                            <li>
+                                <a href="/">
+                                    <span class="w-6 text-center"><i class="fa-solid fa-home" /></span>
+                                    <span>Homepage</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/blog">
+                                    <span class="w-6 text-center"><i class="fa-solid fa-leaf" /></span>
+                                    <span>Blog</span>
+                                </a>
+                            </li>
+                            <hr class="!my-4" />
+                            <li>
+                                <a href="/workflow/mytask">
+                                    <span class="w-6 text-center"><i class="fa-solid fa-display" /></span>
+                                    <span>Workflow</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/accounting/asset">
+                                    <span class="w-6 text-center"><i class="fa-solid fa-book" /></span>
+                                    <span>Accounting</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/finance/dashboard">
+                                    <span class="w-6 text-center"><i class="fa-solid fa-money-check-dollar" /></span>
+                                    <span>Finance</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/automation/pdf-tool">
+                                    <span class="w-6 text-center"><i class="fa-solid fa-robot" /></span>
+                                    <span>Automation</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
             <!-- Setting -->
 
-            <button type="button" class="btn bg-initial">
-                <Icon icon="akar-icons:gear" style="font-size:20px;" />
+            <button type="button" class="btn-icon bg-initial hover:variant-soft-primary">
+                <i class="fa-sharp fa-solid fa-gear text-md" />
             </button>
 
             <!-- Login -->
             <a
-                class="btn bg-initial"
+                class="btn bg-initial hover:variant-soft-primary"
                 href="/"
             >
             Login

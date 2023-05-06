@@ -3,16 +3,24 @@
 	import '@skeletonlabs/skeleton/themes/theme-gold-nouveau.css';
 	// If you have source.organizeImports set to true in VSCode, then it will auto change this ordering
 	import '@skeletonlabs/skeleton/styles/all.css';
+
+	// Import floating UI to implement popup
+	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
+	import { storePopup } from '@skeletonlabs/skeleton';
+
 	// Most of your app wide CSS should be put in this file
 	import '../app.postcss';
 	import { AppShell } from '@skeletonlabs/skeleton';
 	import { page } from '$app/stores';
+
+	
 	
 	// Conponents here
 	import DocsAppbar from '../docs/components/DocsAppbar/DocsAppbar.svelte';
 	import DocsSidebar from '../docs/components/DocsSidebar/DocsSidebar.svelte';
 	import DocsDrawer from '../docs/components/DocsDrawer/DocsDrawer.svelte';
 
+	// Set where appbar and sidebar show
 	function matchPathWhitelist(pageUrlPath: string): boolean {
 		// If homepage route
 		if (pageUrlPath === '/') return true;
@@ -21,6 +29,15 @@
 		return false;
 	}
 
+	// Pass an object containing each of the Floating UI
+	storePopup.set({
+		computePosition,
+		autoUpdate,
+		flip,
+		shift,
+		offset,
+		arrow
+	});
 
 
 

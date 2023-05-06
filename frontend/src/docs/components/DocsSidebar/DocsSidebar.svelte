@@ -16,21 +16,21 @@
     // Props
     export let embedded = false;
 
-    
-	
-
-
-
     // Local
     const storeCategory: Writable<string> = writable('workflow'); // workflow | accounting | finance | tools ---You should figure out what the props do in the writable.
     let filteredMenuNavLinks: any [] = menuNavLinks;
-
+    
     // ListItem Click Handler
     function onListItemClick(): void {
         // On drawer embed only
         if (!embedded) return;
         drawerStore.close();
     }
+	
+
+
+
+
 
     function setNavCategory(c: string): void {
         if (c === 'blog') return;
@@ -75,13 +75,13 @@
     <!--App Rail-->
     <AppRail selected={storeCategory} background="bg-transparent" border="border-r border-surface-500/30">
         <div class="lg:hidden">
-            <AppRailTile label="Home" tag="a" href="/" value={'home'} on:click={onListItemClick}><Icon icon="typcn:home-outline" style="font-size: 40px; " /></AppRailTile>
+            <AppRailTile label="Home" tag="a" href="/" value={'home'} on:click={onListItemClick}><i class="fa-solid fa-home text-2xl" /></AppRailTile>
             <hr class="opacity-30" />
         </div>
-    	<AppRailTile label="Workflow" value={'workflow'}><Icon icon="typcn:arrow-repeat-outline" style="font-size: 40px; " /></AppRailTile>
-    	<AppRailTile label="Accounting" value={'accounting'}><Icon icon="typcn:calculator" style="font-size: 40px; " /></AppRailTile>
-    	<AppRailTile label="Finance" value={'finance'}><Icon icon="typcn:chart-bar-outline" style="font-size: 40px; " /></AppRailTile>
-        <AppRailTile label="Automation" value={'automation'}><Icon icon="typcn:spanner-outline" style="font-size: 40px; " /></AppRailTile>
+    	<AppRailTile label="Workflow" value={'workflow'}><i class="fa-sharp fa-solid fa-display text-2xl" /></AppRailTile>
+    	<AppRailTile label="Accounting" value={'accounting'}><i class="fa-sharp fa-solid fa-book text-2xl" /></AppRailTile>
+    	<AppRailTile label="Finance" value={'finance'}><i class="fa-sharp fa-solid fa-money-check-dollar text-2xl" /></AppRailTile>
+        <AppRailTile label="Automation" value={'automation'}><i class="fa-sharp fa-solid fa-robot text-2xl" /></AppRailTile>
     </AppRail>
     <!--Nav Link-->
 	<section class="p-4 pb-20 space-y-4 overflow-y-auto w-64">
