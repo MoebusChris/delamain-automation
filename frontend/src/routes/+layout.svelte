@@ -4,9 +4,16 @@
 	// If you have source.organizeImports set to true in VSCode, then it will auto change this ordering
 	import '@skeletonlabs/skeleton/styles/all.css';
 
-	// Import floating UI to implement popup
+	// Dependency for Highlight.js
+	import hljs from 'highlight.js';
+	import '../docs/styles/highlight-js.css'
+	import { storeHighlightJs } from '@skeletonlabs/skeleton';
+	storeHighlightJs.set(hljs);
+
+	// Dependency for Floating UI
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
 	import { storePopup } from '@skeletonlabs/skeleton';
+	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 
 	// Most of your app wide CSS should be put in this file
 	import '../app.postcss';
