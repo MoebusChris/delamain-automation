@@ -16,12 +16,13 @@
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 
 	// Most of your app wide CSS should be put in this file
-	import '../app.postcss';
 	import { AppShell } from '@skeletonlabs/skeleton';
 	import { page } from '$app/stores';
 
-	
-	
+	// Skeleton Stylesheets
+	import '../app.postcss';
+	import '../docs/styles/blog.css';
+
 	// Conponents here
 	import DocsAppbar from '../docs/components/DocsAppbar/DocsAppbar.svelte';
 	import DocsSidebar from '../docs/components/DocsSidebar/DocsSidebar.svelte';

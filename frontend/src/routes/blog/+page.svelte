@@ -26,11 +26,11 @@
 <div class="page-container-wide page-padding">
 	<header class="flex justify-between items-center">
 		<div class="space-y-4">
-			<h2 class="h2">The Skeleton Blog</h2>
+			<h2 class="h2">The Delamain Blog</h2>
 			<p>Keep up with the latest news, tutorials, and releases for Skeleton.</p>
 		</div>
 		<!-- RSS Icon -->
-		<!--<button class="btn-icon btn-icon-sm !bg-orange-500" on:click={copyRSSToClipboard} on:keypress>
+		<!-- <button class="btn-icon btn-icon-sm !bg-orange-500" on:click={copyRSSToClipboard} on:keypress>
 			<i class="fa-solid fa-square-rss text-xl" />
 		</button>-->
 	</header>

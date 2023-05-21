@@ -2,8 +2,8 @@
 
 // HTTP ---
 
-const baseUrl = 'http://localhost:2368/ghost/api/content';
-const ghostKey = '2515057ec68cf79e673c103b96';
+const baseUrl = 'https://delamain.io/ghost/api/content';
+const ghostKey = '52abdf35d4a9186569198573eb';
 const headers = { 'Accept-Version': 'v5.0' };
 
 export async function getBlogList(page = 1): Promise<any> {
