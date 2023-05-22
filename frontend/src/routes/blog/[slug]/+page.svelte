@@ -1,7 +1,6 @@
 <script lang="ts">
 	import hljs from 'highlight.js';
 	import { onMount } from 'svelte';
-	import { page } from '$app/stores';
 
 	// +page.ts
 	import type { PageData } from './$types';
